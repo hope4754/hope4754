@@ -1,0 +1,48 @@
+#include <iostream>
+
+int main() {
+    // 高分對應值的陣列
+    int high_scores[13] = {1, 1, 1, 1, 1, 1, 2, 3, 4, 5, 6, 7, 8};
+    // 除占分對應值的陣列
+    double weight_scores[10] = {0.5, 0.9, 0.7, 0.7, 0.8, 0.5, 0.4, 0.3, 0.2, 0.3};
+
+    int input_high;
+    int input_weight;
+    int input_small;
+
+    // 請用戶輸入高分
+    std::cout << "請輸入高分 (1 到 13): ";
+    std::cin >> input_high;
+
+    // 檢查輸入是否在1到13之間
+    if (input_high >= 1 && input_high <= 13) {
+        // 根據輸入的高分找到對應的值
+        int high_score_value = high_scores[input_high - 1];
+
+        // 請用戶輸入除占分
+        std::cout << "請輸入除占分 (0 到 9): ";
+        std::cin >> input_weight;
+
+        // 檢查輸入是否在0到9之間
+        if (input_weight >= 0 && input_weight <= 9) {
+            // 根據輸入的除占分找到對應的值
+            double weight_value = weight_scores[input_weight];
+
+            // 請用戶輸入小分
+            std::cout << "請輸入小分: ";
+            std::cin >> input_small;
+
+            // 計算最終結果
+            double result = (double)(input_high - input_small + high_score_value) / weight_value;
+
+            // 輸出最終結果
+            std::cout << "計算結果為: " << result << std::endl;
+        } else {
+            std::cout << "輸入的除占分不在範圍內" << std::endl;
+        }
+    } else {
+        std::cout << "輸入的高分不在範圍內" << std::endl;
+    }
+
+    return 0;
+}
